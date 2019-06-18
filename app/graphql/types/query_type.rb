@@ -23,7 +23,7 @@ module Types
     end
 
     def get_all_posts(limit: nil)
-      Post.eager_load(:user).all.limit(limit)
+      Post.eager_load(:user, :comments).all.limit(limit)
     end
   end
 end
