@@ -14,7 +14,11 @@ module Types
       description 'The User\'s last name'
     end
 
-    field :full_name, String, method: :full_name, null: true do
+    field :full_name,
+            String,
+            method: :full_name,
+            deprecation_reason: "Please use the firstName and lastName fields. This field is marked for removal",
+            null: true do
       description 'The User\'s last name'
     end
 
@@ -29,6 +33,7 @@ module Types
     field :comments, [Types::CommentType], null: true do
       description 'The comments this user has posted'
     end
+
     def comments(ids: object.comments.ids)
       RecordLoader.for(Comment).load_many(ids)
     end
