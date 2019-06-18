@@ -8,6 +8,8 @@ gem 'rails', '~> 5.2.3'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'graphql'
+gem 'graphql-rails_logger'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
