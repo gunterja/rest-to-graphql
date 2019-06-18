@@ -14,6 +14,10 @@ module Types
       description 'The User\'s last name'
     end
 
+    field :full_name, String, method: :full_name, null: true do
+      description 'The User\'s last name'
+    end
+
     field :email, String, null: true do
       description 'The User\'s email address'
     end
