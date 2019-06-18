@@ -15,5 +15,15 @@ module Types
     def get_user(id:)
       User.find(id)
     end
+
+    field :get_all_posts, [Types::PostType], null: false do
+      description 'Get all of the Posts in the DB'
+
+      argument :limit, Int, 'A limit to the number of records to retreive', required: false
+    end
+
+    def get_all_posts(limit: nil)
+      Post.eager_load(:user).all.limit(limit)
+    end
   end
 end
