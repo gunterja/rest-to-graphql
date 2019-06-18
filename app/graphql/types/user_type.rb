@@ -29,5 +29,8 @@ module Types
     field :comments, [Types::CommentType], null: true do
       description 'The comments this user has posted'
     end
+    def comments(ids: object.comments.ids)
+      RecordLoader.for(Comment).load_many(ids)
+    end
   end
 end
