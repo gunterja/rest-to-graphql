@@ -25,5 +25,13 @@ module Types
     def get_all_posts(limit: nil)
       Post.eager_load(:user, :comments).all.limit(limit)
     end
+
+    field :get_post_with_title, [Types::PostType], null: false do
+      argument :title, String, "The Title you want to search for", required: true
+    end
+
+    def get_post_with_title(title: title)
+      Post.where('title LIKE ?', title)
+    end
   end
 end
